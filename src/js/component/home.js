@@ -1,24 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
+//create your first componentv
+//
+// const redStyles{
+// backgrounColor: red,
+// height: 150 px,
+// width : 400 px,
+// }
 
-//create your first component
 export function Home() {
+	const [greenLight, setgreenLight] = useState("inactive");
+	const [amberLight, setamberLight] = useState("inactive");
+	const [redLight, setredLight] = useState("card");
+
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImage} />
-			</p>
-			<a href="#" className="btn btn-success">
-				If you see this green button... bootstrap is working
-			</a>
-			<p>
-				Made by{" "}
-				<a href="http://www.4geeksacademy.com">4Geeks Academy</a>, with
-				love!
-			</p>
+		<div className="container">
+			<div
+				className={redLight}
+				onClick={() => {
+					setredLight(redLight === "card" ? "inactive" : "card");
+					setgreenLight(
+						redLight === "card" ? "inactive" : "inactive"
+					);
+					setamberLight(
+						redLight === "card" ? "inactive" : "inactive"
+					);
+				}}
+			/>
+
+			<div
+				className={amberLight}
+				onClick={() => {
+					setamberLight(
+						amberLight === "card1" ? "inactive" : "card1"
+					);
+					setredLight(
+						amberLight === "card1" ? "inactive" : "inactive"
+					);
+
+					setgreenLight(
+						amberLight === "card1" ? "inactive" : "inactive"
+					);
+				}}
+			/>
+			<div
+				className={greenLight}
+				onClick={() => {
+					setgreenLight(
+						greenLight === "card2" ? "inactive" : "card2"
+					);
+					setredLight(
+						greenLight === "card2" ? "inactive" : "inactive"
+					);
+					setamberLight(
+						greenLight === "card2" ? "inactive" : "inactive"
+					);
+				}}
+			/>
 		</div>
 	);
 }
